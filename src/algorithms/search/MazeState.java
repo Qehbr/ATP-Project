@@ -19,7 +19,7 @@ public class MazeState extends AState implements Comparable {
     }
 
     @Override
-    int[] getPosition() {
+    public int[] getPosition() {
         return new int[]{x, y};
     }
 

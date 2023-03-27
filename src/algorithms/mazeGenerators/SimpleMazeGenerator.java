@@ -1,5 +1,8 @@
 package algorithms.mazeGenerators;
 
+import static algorithms.mazeGenerators.Maze.MazeGOAL;
+import static algorithms.mazeGenerators.Maze.MazeSTART;
+
 public class SimpleMazeGenerator extends AMazeGenerator {
     @Override
     public Maze generate(int rows, int cols) {

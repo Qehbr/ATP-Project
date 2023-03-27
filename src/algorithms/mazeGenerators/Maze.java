@@ -9,6 +9,12 @@ public class Maze {
     private Position startPosition, goalPosition;
     protected int[][] mazeMap;
 
+    protected static String MazeWALL = "▓";
+    protected static String MazePASS = " ";
+
+    protected static String MazeGOAL = "E";
+    protected static String MazeSTART = "S";
+
 
     public void print() {
         for (int i = 0; i < rows; i++) {
@@ -25,7 +31,6 @@ public class Maze {
             }
             System.out.println();
         }
-
     }
 
     public Position getStartPosition() {

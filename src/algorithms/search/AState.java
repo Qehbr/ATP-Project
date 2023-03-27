@@ -22,5 +22,7 @@ public abstract class AState {
         this.comeFrom = comeFrom;
     }
 
-    abstract int[] getPosition();
+    public abstract int[] getPosition();
+
+
 }

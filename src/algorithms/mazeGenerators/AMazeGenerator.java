@@ -5,12 +5,6 @@ import java.util.Random;
 public abstract class AMazeGenerator implements IMazeGenerator {
 
     public static Random random = new Random();
-    protected static String MazeWALL = "▓";
-    protected static String MazePASS = " ";
-
-    protected static String MazeGOAL = "E";
-    protected static String MazeSTART = "S";
-
 
     @Override
     public long measureAlgorithmTimeMillis(int rows, int cols) {

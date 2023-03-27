@@ -1,8 +1,8 @@
 package algorithms.mazeGenerators;
 
 public class Position {
-    protected String type;
-    protected int row, col;
+    private String type;
+    private int row, col;
 
     @Override
     public String toString() {

@@ -5,6 +5,7 @@ import java.util.*;
 public class DepthFirstSearch extends ASearchingAlgorithm{
 
     Stack<AState> open;
+    HashSet<AState> openHash;
     HashSet<AState> closed;
     int numberOfNodesEvaluated = 0;
 
@@ -13,11 +14,13 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
         super("DepthFirstSearch");
         open = new Stack<>();
         closed = new HashSet<>();
+        openHash = new HashSet<>();
     }
 
     @Override
     public Solution solve(ISearchable searchable) {
         open.push(searchable.getStartState());
+        openHash.add(searchable.getStartState());
 
         while (true) {
             if (open.isEmpty()) {
@@ -25,6 +28,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
                 break;
             }
             AState n = open.pop();
+            openHash.remove(n);
             numberOfNodesEvaluated++;
             closed.add(n);
             if (n.equals(searchable.getGoalState())) {
@@ -34,8 +38,12 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
 
             for (AState s : successors) {
                 if (!closed.contains(s)) {
-                    s.setComeFrom(n);
-                    open.push(s);
+                    if (!openHash.contains(s)) {
+                        s.setCost(s.getCost() + n.getCost());
+                        s.setComeFrom(n);
+                        open.add(s);
+                        openHash.add(s);
+                    }
                 }
             }
         }

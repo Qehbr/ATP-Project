@@ -2,6 +2,9 @@ package algorithms.mazeGenerators;
 
 import java.util.*;
 
+import static algorithms.mazeGenerators.Maze.MazeGOAL;
+import static algorithms.mazeGenerators.Maze.MazeSTART;
+
 public class MyMazeGenerator extends AMazeGenerator {
 
     @Override
@@ -11,25 +14,20 @@ public class MyMazeGenerator extends AMazeGenerator {
         Position sp = new Position(startPositions[0], startPositions[1], MazeSTART);
         Maze maze = new Maze(rows, cols, sp);
 
-        //fill the maze with walls
+        int[][] visited = new int[rows][cols];
+        //fill the maze with walls and make all positions unvisited
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 maze.mazeMap[i][j] = 1;
-            }
-        }
-
-        //make start positions passages
-        maze.mazeMap[sp.getRow()][sp.getCol()] = 0;
-
-        //prims algorithm:
-        ArrayList<int[]> walls = new ArrayList<>();
-        int[][] visited = new int[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
                 visited[i][j] = 0;
             }
         }
 
+        //make start position passage
+        maze.mazeMap[sp.getRow()][sp.getCol()] = 0;
+
+        //prims algorithm:
+        ArrayList<int[]> walls = new ArrayList<>();
 
         //in order to create walls around maze we should take the neighbor of start position within the maze:
         int[] spCellWithinTheMaze = getCellWithinTheMaze(sp.getRow(), sp.getCol(), rows, cols);
@@ -45,29 +43,19 @@ public class MyMazeGenerator extends AMazeGenerator {
             int randomWallIndex = (int) (Math.random() * walls.size());
             int[] wall = walls.remove(randomWallIndex);
 
-            //all neighbors of given wall
-            int[] northNeighbor = {wall[0] - 1, wall[1]};
-            int[] southNeighbor = {wall[0] + 1, wall[1]};
-            int[] westNeighbor = {wall[0], wall[1] - 1};
-            int[] eastNeighbor = {wall[0], wall[1] + 1};
+            //make the wall visited
+            visited[wall[0]][wall[1]] = 1;
 
             //If only one of the cells that the wall divides is visited
             int visitedCells = 0;
-            if (visited[northNeighbor[0]][northNeighbor[1]] == 1) {
-                visitedCells += 1;
-            }
-            if (visited[southNeighbor[0]][southNeighbor[1]] == 1) {
-                visitedCells += 1;
-            }
-            if (visited[westNeighbor[0]][westNeighbor[1]] == 1) {
-                visitedCells += 1;
-            }
-            if (visited[eastNeighbor[0]][eastNeighbor[1]] == 1) {
-                visitedCells += 1;
+            ArrayList<int[]> neighbors = maze.getPassages(wall[0], wall[1]);
+            for (int[] neighbor : neighbors) {
+                if (visited[neighbor[0]][neighbor[1]] == 1) {
+                    visitedCells += 1;
+                }
             }
             if (visitedCells == 1) {
-                //make the wall visited
-                visited[wall[0]][wall[1]] = 1;
+
                 //make it passage
                 maze.mazeMap[wall[0]][wall[1]] = 0;
 
@@ -90,7 +78,6 @@ public class MyMazeGenerator extends AMazeGenerator {
                         maze.setGoalPosition(gp);
 
                 }
-
                 //add neighboring walls of given wall
                 walls.addAll(getNeighborsWithinTheMaze(wall[0], wall[1], rows, cols));
             }
