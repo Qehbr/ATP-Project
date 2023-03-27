@@ -86,7 +86,8 @@ public class MyMazeGenerator extends AMazeGenerator {
                     if (wall[1] == cols - 2) {
                         gp = new Position(wall[0], cols - 1, MazeGOAL);
                     }
-                    maze.setGoalPosition(gp);
+                    if (!(gp.getRow() == sp.getRow() && gp.getCol() == sp.getCol()))
+                        maze.setGoalPosition(gp);
 
                 }
 

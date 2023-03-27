@@ -1,4 +1,16 @@
 package algorithms.search;
 
-public class ASearchingAlgorithm {
+import java.util.List;
+
+public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
+    String name;
+
+    public ASearchingAlgorithm(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }
