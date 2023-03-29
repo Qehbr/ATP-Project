@@ -2,10 +2,14 @@ package algorithms.search;
 
 import java.util.*;
 
+/**
+ * BFS extends abstract class Searching Algorithm
+ */
 public class BreadthFirstSearch extends ASearchingAlgorithm {
+    //uses queue
     Queue<AState> open;
-    HashSet<AState> openHash;
-    HashSet<AState> closed;
+    //hash for searching open and closed states fast
+    HashSet<AState> openHash, closed;
     int numberOfNodesEvaluated = 0;
 
 
@@ -16,7 +20,13 @@ public class BreadthFirstSearch extends ASearchingAlgorithm {
         openHash = new HashSet<>();
     }
 
-    protected BreadthFirstSearch(String name, PriorityQueue<AState> open) {
+    /**
+     * Constructor for algorithms extending BFS (e.g. BestFirstSearch)
+     *
+     * @param name Name of algorithm
+     * @param open New open queue
+     */
+    protected BreadthFirstSearch(String name, Queue<AState> open) {
         super(name);
         this.open = open;
         closed = new HashSet<>();

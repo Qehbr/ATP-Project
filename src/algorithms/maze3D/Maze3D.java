@@ -1,30 +1,39 @@
 package algorithms.maze3D;
 
-
-import algorithms.mazeGenerators.Position;
-
 import java.util.ArrayList;
 
+/**
+ * 3D Maze class
+ */
 public class Maze3D {
-
+    //3d array of ints (0 representing passage, 1 representing wall) for maze
     protected int[][][] mazeMap;
+    //each maze has start and goal positions
     private Position3D start, goal;
-
+    //dimensions of the maze
     private int depths, rows, cols;
 
+    //Strings for different positions in maze
     protected static String Maze3DWALL = "▓";
     protected static String Maze3DPASS = " ";
 
     protected static String Maze3DGOAL = "E";
     protected static String Maze3DSTART = "S";
 
-
+    /**
+     * Maze constructor (goal should be set with setGoal function)
+     *
+     * @param rows          Rows of maze
+     * @param cols          Columns of maze
+     * @param startPosition Start position
+     */
     public Maze3D(int depths, int rows, int cols, Position3D startPosition) {
         this.depths = depths;
         this.rows = rows;
         this.cols = cols;
         this.start = startPosition;
         this.mazeMap = new int[depths][rows][cols];
+        //make maze empty
         for (int i = 0; i < depths; i++) {
             for (int j = 0; j < rows; j++) {
                 for (int k = 0; k < cols; k++) {
@@ -34,22 +43,9 @@ public class Maze3D {
         }
     }
 
-    public int[][][] getMap() {
-        return mazeMap;
-    }
-
-    public Position3D getStartPosition() {
-        return start;
-    }
-
-    public Position3D getGoalPosition() {
-        return goal;
-    }
-
-    public void setGoalPosition(Position3D goalPosition) {
-        this.goal = goalPosition;
-    }
-
+    /**
+     * Prining maze
+     */
     public void print() {
         for (int i = 0; i < depths; i++) {
             for (int j = 0; j < rows; j++) {
@@ -66,10 +62,18 @@ public class Maze3D {
                 }
                 System.out.println();
             }
-            System.out.println("|||||||||||||||");
+            System.out.println("*New****************Dimension*");
         }
     }
 
+    /**
+     * Returns all neighbors of given position within the maze (excluding diagonal)
+     *
+     * @param depthIndex  Depth of position
+     * @param rowIndex    Row of position
+     * @param columnIndex Column of position
+     * @return Arraylist of all neighbors within the maze
+     */
     public ArrayList<int[]> getNeighbors(int depthIndex, int rowIndex, int columnIndex) {
         ArrayList<int[]> neighbors = new ArrayList<>();
         // Iterate over all possible neighbor coordinates
@@ -98,8 +102,33 @@ public class Maze3D {
 
     }
 
-    public boolean isOnOutside(int x, int y, int z) {
-        return x == 0 || y == 0 || z == 0 || x == this.depths - 1 || y == this.rows - 1 || z == this.cols - 1;
+    /**
+     * Checks if given position is on edge (outside) of the 3D maze
+     *
+     * @param depth depth of position
+     * @param row   row of position
+     * @param col   col of position
+     * @return
+     */
+    public boolean isOnOutside(int depth, int row, int col) {
+        return depth == 0 || row == 0 || col == 0 || depth == this.depths - 1 || row == this.rows - 1 || col == this.cols - 1;
+    }
+
+    //getters
+    public int[][][] getMap() {
+        return mazeMap;
+    }
+
+    public Position3D getStartPosition() {
+        return start;
+    }
+
+    public Position3D getGoalPosition() {
+        return goal;
+    }
+
+    public void setGoalPosition(Position3D goalPosition) {
+        this.goal = goalPosition;
     }
 
 }

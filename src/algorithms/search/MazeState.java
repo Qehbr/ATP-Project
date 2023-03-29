@@ -1,26 +1,45 @@
 package algorithms.search;
 
+/**
+ * State of maze for searching algorithms
+ */
 public class MazeState extends AState implements Comparable {
-    private int x;
-    private int y;
+    private int row;
+    private int col;
 
-    public MazeState(int x, int y, AState comeFrom) {
-        this.x = x;
-        this.y = y;
+    /**
+     * MazeState constructor (cost should be set using setCost function)
+     *
+     * @param row      Row of state
+     * @param col      Column of state
+     * @param comeFrom Predecessor of state
+     */
+    public MazeState(int row, int col, AState comeFrom) {
+        this.row = row;
+        this.col = col;
         super.comeFrom = comeFrom;
         super.cost = -1;
     }
 
-    public MazeState(int x, int y, AState comeFrom, int cost) {
-        this.x = x;
-        this.y = y;
+    /**
+     * MazeState constructor
+     *
+     * @param row      Row of state
+     * @param col      Column of state
+     * @param comeFrom Predecessor of state
+     * @param cost     Cost of state
+     */
+    public MazeState(int row, int col, AState comeFrom, int cost) {
+        this.row = row;
+        this.col = col;
         super.comeFrom = comeFrom;
         super.cost = cost;
     }
 
+    //getters and overrided functions
     @Override
     public int[] getPosition() {
-        return new int[]{x, y};
+        return new int[]{row, col};
     }
 
     @Override
@@ -34,12 +53,12 @@ public class MazeState extends AState implements Comparable {
         }
 
         MazeState state = (MazeState) obj;
-        return (this.x == state.x && this.y == state.y);
+        return (this.row == state.row && this.col == state.col);
     }
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + ')';
+        return "(" + row + "," + col + ')';
     }
 
     @Override

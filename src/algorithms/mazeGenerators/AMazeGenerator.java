@@ -2,9 +2,13 @@ package algorithms.mazeGenerators;
 
 import java.util.Random;
 
+/**
+ * Abstract class Maze Generator implementing interface Maze Generator
+ */
 public abstract class AMazeGenerator implements IMazeGenerator {
 
     public static Random random = new Random();
+
 
     @Override
     public long measureAlgorithmTimeMillis(int rows, int cols) {
@@ -13,8 +17,15 @@ public abstract class AMazeGenerator implements IMazeGenerator {
         return System.currentTimeMillis() - startTime;
     }
 
+    /**
+     * Static function for generating random position on edge of the maze (!does not include corners!)
+     * @param rows Rows of maze
+     * @param cols Columns of maze
+     * @return positions[0] - row, positions[1] - column of position
+     */
     protected static int[] generatePositionsOnEdge(int rows, int cols) {
         int X = 0, Y = 0;
+        //make sure it is not corner
         while ((X == 0 && Y == 0) || (X == 0 && Y == cols - 1) || (X == rows - 1 && Y == 0) || (X == rows - 1 && Y == cols - 1)) {
             int side = random.nextInt(4);
             switch (side) {
@@ -39,20 +50,4 @@ public abstract class AMazeGenerator implements IMazeGenerator {
         positions[1] = Y;
         return positions;
     }
-
-//    protected static Position[] generateStartAndGoalPosition(int rows, int cols) {
-//        // Generate start and goal positions
-//        int[] startPositions = generatePositionsOnEdge(rows, cols);
-//        int[] goalPositions = generatePositionsOnEdge(rows, cols);
-//        while (goalPositions[0] == startPositions[0] && goalPositions[1] == startPositions[1]) {
-//            goalPositions = AMazeGenerator.generatePositionsOnEdge(rows, cols);
-//        }
-//        Position sp = new Position(startPositions[0], startPositions[1], MazeSTART) {
-//        };
-//        Position gp = new Position(goalPositions[0], goalPositions[1], MazeGOAL);
-//        Position[] spAndGp = new Position[2];
-//        spAndGp[0] = sp;
-//        spAndGp[1] = gp;
-//        return spAndGp;
-//    }
 }

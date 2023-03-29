@@ -5,8 +5,18 @@ import java.util.*;
 import static algorithms.mazeGenerators.Maze.MazeGOAL;
 import static algorithms.mazeGenerators.Maze.MazeSTART;
 
+/**
+ * MyMazeGenerator extends abstract class AMazeGenerator.
+ * Generator for maze using Prims Algorithm
+ */
 public class MyMazeGenerator extends AMazeGenerator {
-
+    /**
+     * Generating random maze using Prim's Algorithm
+     *
+     * @param rows Rows of maze
+     * @param cols Columns of maze
+     * @return Randomly generated maze
+     */
     @Override
     public Maze generate(int rows, int cols) {
         //create maze with ONLY start position
@@ -24,13 +34,13 @@ public class MyMazeGenerator extends AMazeGenerator {
         }
 
         //make start position passage
-        maze.mazeMap[sp.getRow()][sp.getCol()] = 0;
+        maze.mazeMap[sp.getRowIndex()][sp.getColumnIndex()] = 0;
 
         //prims algorithm:
         ArrayList<int[]> walls = new ArrayList<>();
 
         //in order to create walls around maze we should take the neighbor of start position within the maze:
-        int[] spCellWithinTheMaze = getCellWithinTheMaze(sp.getRow(), sp.getCol(), rows, cols);
+        int[] spCellWithinTheMaze = getCellWithinTheMaze(sp.getRowIndex(), sp.getColumnIndex(), rows, cols);
         // make it passage
         maze.mazeMap[spCellWithinTheMaze[0]][spCellWithinTheMaze[1]] = 0;
         //start prims algorithm from the start cell within the maze
@@ -74,7 +84,7 @@ public class MyMazeGenerator extends AMazeGenerator {
                     if (wall[1] == cols - 2) {
                         gp = new Position(wall[0], cols - 1, MazeGOAL);
                     }
-                    if (!(gp.getRow() == sp.getRow() && gp.getCol() == sp.getCol()))
+                    if (!(gp.getRowIndex() == sp.getRowIndex() && gp.getColumnIndex() == sp.getColumnIndex()))
                         maze.setGoalPosition(gp);
 
                 }
@@ -82,33 +92,47 @@ public class MyMazeGenerator extends AMazeGenerator {
                 walls.addAll(getNeighborsWithinTheMaze(wall[0], wall[1], rows, cols));
             }
         }
-        maze.mazeMap[maze.getGoalPosition().getRow()][maze.getGoalPosition().getCol()] = 0;
+        maze.mazeMap[maze.getGoalPosition().getRowIndex()][maze.getGoalPosition().getColumnIndex()] = 0;
         return maze;
     }
 
-    //get all neighbors of cell within the maze
+    /**
+     * Returns all neighbors of given position WITHIN the maze (not including walls)
+     *
+     * @param row        Row of position
+     * @param col        Column of position
+     * @param rowsOfMaze Rows of maze
+     * @param colsOfMaze Cols of maze
+     * @return Arraylist of neighbors within the maze
+     */
     private List<int[]> getNeighborsWithinTheMaze(int row, int col, int rowsOfMaze, int colsOfMaze) {
-        int[] northNeighbor = {row - 1, col};
-        int[] southNeighbor = {row + 1, col};
-        int[] westNeighbor = {row, col - 1};
-        int[] eastNeighbor = {row, col + 1};
         ArrayList<int[]> neighbors = new ArrayList<>();
         if (row - 1 > 0) {
-            neighbors.add(northNeighbor);
+            neighbors.add(new int[]{row - 1, col}); //north
         }
         if (row + 1 < rowsOfMaze - 1) {
-            neighbors.add(southNeighbor);
+            neighbors.add(new int[]{row + 1, col}); //south
         }
         if (col - 1 > 0) {
-            neighbors.add(westNeighbor);
+            neighbors.add(new int[]{row, col - 1}); //west
         }
         if (col + 1 < colsOfMaze - 1) {
-            neighbors.add(eastNeighbor);
+            neighbors.add(new int[]{row, col + 1}); //east
         }
         return neighbors;
     }
 
-    //gives cell adjacent to given in cell within the maze
+
+    /**
+     * Given position on edge returns position within the maze
+     * (Used to make positions near START/GOAL positions passages)
+     *
+     * @param row        Row of position
+     * @param col        Column of position
+     * @param rowsOfMaze Rows of maze
+     * @param colsOfMaze Cols of maze
+     * @return Position within the maze
+     */
     private int[] getCellWithinTheMaze(int row, int col, int rowsOfMaze, int colsOfMaze) {
         if (row == 0) {
             return new int[]{row + 1, col};

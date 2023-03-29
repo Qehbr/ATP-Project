@@ -2,28 +2,49 @@ package algorithms.maze3D;
 
 import algorithms.search.AState;
 
+/**
+ * State of 3D maze for searching algorithms
+ */
 public class Maze3DState extends AState implements Comparable {
-    private int x, y, z;
+    private int depth, row, col;
 
-    public Maze3DState(int x, int y, int z, AState comeFrom) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    /**
+     * Maze3DState constructor (cost should be set using setCost function)
+     *
+     * @param depth    Depth of state
+     * @param row      Row of state
+     * @param col      Column of state
+     * @param comeFrom Predecessor of state
+     */
+    public Maze3DState(int depth, int row, int col, AState comeFrom) {
+        this.depth = depth;
+        this.row = row;
+        this.col = col;
         super.comeFrom = comeFrom;
         super.cost = -1;
     }
 
-    public Maze3DState(int x, int y, int z, AState comeFrom, int cost) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    /**
+     * Maze3DState constructor (cost should be set using setCost function)
+     *
+     * @param depth    Depth of state
+     * @param row      Row of state
+     * @param col      Column of state
+     * @param comeFrom Predecessor of state
+     * @param cost     Cost of state
+     */
+    public Maze3DState(int depth, int row, int col, AState comeFrom, int cost) {
+        this.depth = depth;
+        this.row = row;
+        this.col = col;
         super.comeFrom = comeFrom;
         super.cost = cost;
     }
 
+    //getters and overrided functions
     @Override
     public int[] getPosition() {
-        return new int[]{x, y, z};
+        return new int[]{depth, row, col};
     }
 
     @Override
@@ -37,12 +58,12 @@ public class Maze3DState extends AState implements Comparable {
         }
 
         Maze3DState state = (Maze3DState) obj;
-        return (this.x == state.x && this.y == state.y && this.z == state.z);
+        return (this.depth == state.depth && this.row == state.row && this.col == state.col);
     }
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + "," + z + ')';
+        return "(" + depth + "," + row + "," + col + ')';
     }
 
     @Override

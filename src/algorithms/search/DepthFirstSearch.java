@@ -2,11 +2,15 @@ package algorithms.search;
 
 import java.util.*;
 
-public class DepthFirstSearch extends ASearchingAlgorithm{
+/**
+ * DFS extends abstract class Searching Algorithm
+ */
+public class DepthFirstSearch extends ASearchingAlgorithm {
 
+    //uses stack
     Stack<AState> open;
-    HashSet<AState> openHash;
-    HashSet<AState> closed;
+    //hash for searching open and closed states fast
+    HashSet<AState> openHash, closed;
     int numberOfNodesEvaluated = 0;
 
 
@@ -24,7 +28,7 @@ public class DepthFirstSearch extends ASearchingAlgorithm{
 
         while (true) {
             if (open.isEmpty()) {
-                System.out.println("OPEN IS EMPTY");
+                System.out.println("OPEN IS EMPTY, NOT FOUND");
                 break;
             }
             AState n = open.pop();

@@ -1,8 +1,11 @@
 package algorithms.maze3D;
 
-import java.util.ArrayList;
+
 import java.util.Random;
 
+/**
+ * Abstract class Maze3D Generator implementing interface Maze3D Generator
+ */
 public abstract class AMaze3DGenerator implements IMazeGenerator3D {
 
     public static Random random3D = new Random();
@@ -14,6 +17,14 @@ public abstract class AMaze3DGenerator implements IMazeGenerator3D {
         return System.currentTimeMillis() - startTime;
     }
 
+    /**
+     * Static function for generating random position on edge of the 3D maze
+     *
+     * @param depths Depth of maze
+     * @param rows   Rows of maze
+     * @param cols   Columns of maze
+     * @return positions[0] - depth, positions[1] - row, positions[2] - column of position
+     */
     protected static int[] generatePositionsOnEdge(int depths, int rows, int cols) {
         int X = 0, Y = 0, Z = 0;
         int face = random3D.nextInt(6); // Generate a random face (0=top, 1=bottom, 2=left, 3=right, 4=front, 5=back)

@@ -1,11 +1,15 @@
 package algorithms.search;
 
+/**
+ * Abstract class State for states for searching algorithms
+ */
 public abstract class AState {
 
-
+    //each state has its predecessor and cost
     protected AState comeFrom;
     protected int cost;
 
+    //getters and setters
     public int getCost() {
         return cost;
     }

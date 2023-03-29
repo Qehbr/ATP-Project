@@ -5,10 +5,18 @@ import algorithms.search.ISearchable;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter from ISearchable interface to Maze3D class
+ */
 public class SearchableMaze3D implements ISearchable {
     Maze3D sMaze;
     Maze3DState startState, goalState;
 
+    /**
+     * Searchable 3D maze constructor
+     *
+     * @param maze 3D Maze to adapt for ISearchable
+     */
     public SearchableMaze3D(Maze3D maze) {
         sMaze = maze;
         startState = new Maze3DState(sMaze.getStartPosition().getDepthIndex(), sMaze.getStartPosition().getRowIndex(), sMaze.getStartPosition().getRowIndex(), null, 0);

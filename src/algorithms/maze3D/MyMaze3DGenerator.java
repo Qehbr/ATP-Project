@@ -7,7 +7,19 @@ import java.util.ArrayList;
 import static algorithms.maze3D.Maze3D.Maze3DGOAL;
 import static algorithms.maze3D.Maze3D.Maze3DSTART;
 
+/**
+ * MyMaze3DGenerator extends abstract class AMazeGenerator.
+ * Generator for 3D maze using Prims Algorithm
+ */
 public class MyMaze3DGenerator extends AMaze3DGenerator {
+    /**
+     * Generating random 3D maze using extended Prim's Algorithm
+     *
+     * @param depth  Depts of maze
+     * @param row    Rows of maze
+     * @param column Columns of maze
+     * @return Randomly generated maze
+     */
     @Override
     public Maze3D generate(int depth, int row, int column) {
         int[] startPositions = generatePositionsOnEdge(depth, row, column);
@@ -67,6 +79,4 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
         maze.mazeMap[maze.getGoalPosition().getDepthIndex()][maze.getGoalPosition().getRowIndex()][maze.getGoalPosition().getColumnIndex()] = 0;
         return maze;
     }
-
-
 }

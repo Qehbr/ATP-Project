@@ -1,8 +1,10 @@
 package algorithms.search;
 
-import java.util.List;
-
+/**
+ * Abstract class searching algorithm implementing Searching algorithm interface
+ */
 public abstract class ASearchingAlgorithm implements ISearchingAlgorithm {
+    //algorithms name
     String name;
 
     public ASearchingAlgorithm(String name) {

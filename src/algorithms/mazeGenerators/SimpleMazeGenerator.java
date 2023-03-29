@@ -3,7 +3,18 @@ package algorithms.mazeGenerators;
 import static algorithms.mazeGenerators.Maze.MazeGOAL;
 import static algorithms.mazeGenerators.Maze.MazeSTART;
 
+/**
+ * SimpleMazeGenerator extends abstract class AMazeGenerator.
+ * Generator for simple mazes with a lot of routes
+ */
 public class SimpleMazeGenerator extends AMazeGenerator {
+    /**
+     * Generating random simple maze with a lot of different routes
+     *
+     * @param rows Rows of maze
+     * @param cols Columns of maze
+     * @return Randomly generated maze
+     */
     @Override
     public Maze generate(int rows, int cols) {
         // start and goal at the edges
@@ -44,8 +55,8 @@ public class SimpleMazeGenerator extends AMazeGenerator {
         }
 
         //make start and goal passes
-        simpleMaze.mazeMap[sp.getRow()][sp.getCol()] = 0;
-        simpleMaze.mazeMap[gp.getRow()][gp.getCol()] = 0;
+        simpleMaze.mazeMap[sp.getRowIndex()][sp.getColumnIndex()] = 0;
+        simpleMaze.mazeMap[gp.getRowIndex()][gp.getColumnIndex()] = 0;
 
         return simpleMaze;
     }
