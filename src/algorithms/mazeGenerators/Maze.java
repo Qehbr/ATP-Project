@@ -14,8 +14,8 @@ public class Maze {
     protected int[][] mazeMap;
 
     //Strings for different positions in maze
-    protected static String MazeWALL = "▓";
-    protected static String MazePASS = " ";
+    protected static String MazeWALL = "1";
+    protected static String MazePASS = "0";
 
     protected static String MazeGOAL = "E";
     protected static String MazeSTART = "S";

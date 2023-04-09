@@ -14,8 +14,8 @@ public class Maze3D {
     private int depths, rows, cols;
 
     //Strings for different positions in maze
-    protected static String Maze3DWALL = "▓";
-    protected static String Maze3DPASS = " ";
+    protected static String Maze3DWALL = "1";
+    protected static String Maze3DPASS = "0";
 
     protected static String Maze3DGOAL = "E";
     protected static String Maze3DSTART = "S";

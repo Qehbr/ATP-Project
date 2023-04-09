@@ -27,10 +27,8 @@ public class RunSearchOnMaze3D {
         //Printing Solution Path
         System.out.println("Solution Path:");
         ArrayList<AState> solutionPath = solution.getSolutionPath();
-//        for (int i = 0; i < solutionPath.size(); i++) {
-//            System.out.println(String.format("%s. %s", i, solutionPath.get(i)));
-//        }
-        System.out.println("Solution Length:");
-        System.out.println(solutionPath.size());
+        for (int i = 0; i < solutionPath.size(); i++) {
+            System.out.println(String.format("%s. %s", i, solutionPath.get(i)));
+        }
     }
 }

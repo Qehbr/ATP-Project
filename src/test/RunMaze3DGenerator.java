@@ -7,8 +7,6 @@ import algorithms.maze3D.Position3D;
 
 public class RunMaze3DGenerator {
     public static void main(String[] args) {
-//        testMazeGenerator(new EmptyMazeGenerator());
-//        testMazeGenerator(new SimpleMazeGenerator());
         testMazeGenerator(new MyMaze3DGenerator());
     }
 
