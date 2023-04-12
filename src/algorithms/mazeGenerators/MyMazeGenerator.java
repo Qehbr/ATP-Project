@@ -18,7 +18,11 @@ public class MyMazeGenerator extends AMazeGenerator {
      * @return Randomly generated maze
      */
     @Override
-    public Maze generate(int rows, int cols) {
+    public Maze generate(int rows, int cols) throws IllegalArgumentException {
+
+        //if arguments are 0 or negative, throw exception
+        if (rows <=0 || cols <=0)
+            throw new IllegalArgumentException("Arguments cannot be 0 or negative");
 
         //if maze is too small for being with walls
         if (rows <= 3 || cols <= 3) {
