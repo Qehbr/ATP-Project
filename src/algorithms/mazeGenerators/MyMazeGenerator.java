@@ -19,6 +19,12 @@ public class MyMazeGenerator extends AMazeGenerator {
      */
     @Override
     public Maze generate(int rows, int cols) {
+
+        //if maze is too small for being with walls
+        if (rows <= 3 || cols <= 3) {
+            return new EmptyMazeGenerator().generate(rows,cols);
+        }
+
         //create maze with ONLY start position
         int[] startPositions = generatePositionsOnEdge(rows, cols);
         Position sp = new Position(startPositions[0], startPositions[1], MazeSTART);
