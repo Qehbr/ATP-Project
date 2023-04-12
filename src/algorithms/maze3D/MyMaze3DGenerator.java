@@ -22,6 +22,16 @@ public class MyMaze3DGenerator extends AMaze3DGenerator {
      */
     @Override
     public Maze3D generate(int depth, int row, int column) {
+
+        // if maze is too small
+        if (row <= 3 || column <= 3) {
+            Position3D start3D = new Position3D(0, 0, 0, Maze3DSTART);
+            Position3D goal3D = new Position3D(depth - 1, row - 1, column - 1, Maze3DGOAL);
+            Maze3D maze = new Maze3D(depth, row, column, start3D);
+            maze.setGoalPosition(goal3D);
+            return maze;
+        }
+
         int[] startPositions = generatePositionsOnEdge(depth, row, column);
         Position3D start3D = new Position3D(startPositions[0], startPositions[1], startPositions[2], Maze3DSTART);
         Maze3D maze = new Maze3D(depth, row, column, start3D);
