@@ -17,6 +17,12 @@ public class SimpleMazeGenerator extends AMazeGenerator {
      */
     @Override
     public Maze generate(int rows, int cols) {
+
+        //if maze is too small for being with walls
+        if (rows <= 3 || cols <= 3) {
+            return new EmptyMazeGenerator().generate(rows,cols);
+        }
+
         // start and goal at the edges
         Position sp = new Position(1, 0, MazeSTART);
         Position gp = new Position(rows - 2, cols - 1, MazeGOAL);
