@@ -3,7 +3,7 @@ package algorithms.maze3D;
 /**
  * Interface Maze3D Generator
  */
-public interface IMazeGenerator3D {
+public interface IMaze3DGenerator {
     /**
      * Generating random Maze3D Object with given rows,cols
      *
