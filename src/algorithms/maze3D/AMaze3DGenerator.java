@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Abstract class Maze3D Generator implementing interface Maze3D Generator
  */
-public abstract class AGeneratorMaze3D implements IMaze3DGenerator {
+public abstract class AMaze3DGenerator implements IMaze3DGenerator {
 
     public static Random random3D = new Random();
 

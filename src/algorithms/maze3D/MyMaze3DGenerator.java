@@ -11,7 +11,7 @@ import static algorithms.maze3D.Maze3D.Maze3DSTART;
  * MyMaze3DGenerator extends abstract class AMazeGenerator.
  * Generator for 3D maze using Prims Algorithm
  */
-public class MyMaze3DGenerator extends AGeneratorMaze3D {
+public class MyMaze3DGenerator extends AMaze3DGenerator {
     /**
      * Generating random 3D maze using extended Prim's Algorithm
      *
