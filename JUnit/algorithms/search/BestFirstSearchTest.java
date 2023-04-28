@@ -16,7 +16,7 @@ class BestFirstSearchTest {
         Maze maze  = mg.generate(50,50);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         Solution solution = new BestFirstSearch().solve(searchableMaze);
-        assertEquals(searchableMaze.goalState, solution.solutionState);
+        assertEquals(searchableMaze.goalState, solution.getSolutionState());
     }
 
     @Test
@@ -26,7 +26,7 @@ class BestFirstSearchTest {
         Maze maze  = mg.generate(4,3);
         SearchableMaze searchableMaze = new SearchableMaze(maze);
         Solution solution = new BestFirstSearch().solve(searchableMaze);
-        assertEquals(searchableMaze.goalState, solution.solutionState);
+        assertEquals(searchableMaze.goalState, solution.getSolutionState());
     }
 
     @Test

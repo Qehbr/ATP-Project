@@ -1,9 +1,11 @@
 package algorithms.search;
 
+import java.io.Serializable;
+
 /**
  * Abstract class State for states for searching algorithms
  */
-public abstract class AState {
+public abstract class AState implements Serializable {
 
     //each state has its predecessor and cost
     protected AState comeFrom;

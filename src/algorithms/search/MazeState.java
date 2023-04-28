@@ -1,9 +1,11 @@
 package algorithms.search;
 
+import java.io.Serializable;
+
 /**
  * State of maze for searching algorithms
  */
-public class MazeState extends AState implements Comparable {
+public class MazeState extends AState implements Comparable, Serializable {
     private int row;
     private int col;
 

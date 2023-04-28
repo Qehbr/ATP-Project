@@ -1,14 +1,17 @@
 package algorithms.search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
  * Solution class containing solution of searching algorithm
  */
-public class Solution {
+public class Solution implements Serializable {
+
+
     //solution (goal) state
-    AState solutionState;
+    private AState solutionState;
 
     public Solution(AState solutionState) {
         this.solutionState = solutionState;
@@ -30,5 +33,10 @@ public class Solution {
         Collections.reverse(solution);
         return solution;
 
+    }
+
+    //getters
+    public AState getSolutionState() {
+        return solutionState;
     }
 }

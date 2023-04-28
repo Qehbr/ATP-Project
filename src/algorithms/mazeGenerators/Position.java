@@ -1,9 +1,11 @@
 package algorithms.mazeGenerators;
 
+import java.io.Serializable;
+
 /**
  * Position class for position in maze
  */
-public class Position {
+public class Position implements Serializable {
     //type of position, e.g. START, GOAL
     private String type;
     // row and column of position
