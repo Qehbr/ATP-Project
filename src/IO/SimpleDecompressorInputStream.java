@@ -31,6 +31,7 @@ public class SimpleDecompressorInputStream extends InputStream {
         //get compressed bytes
         byte[] mazeBytes = in.readAllBytes();
 
+
         //start position, goal position, rows, cols
         int i;
         for (i = 0; i < 24; i++) {

@@ -7,6 +7,7 @@ import java.net.SocketTimeoutException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
 /**
  * Class representing the server using general server strategy
  */
@@ -30,7 +31,7 @@ public class Server {
         this.listeningIntervals = listeningIntervals;
         this.serverStrategy = serverStrategy;
         this.stop = false;
-        this.threadPool = Executors.newFixedThreadPool(2); //TODO get number of threads from Configurations
+        this.threadPool = Executors.newFixedThreadPool(Configurations.getNumberOfThreads());
     }
 
     /**
@@ -38,6 +39,7 @@ public class Server {
      */
     public void start() {
         new Thread(() -> {
+            Configurations.init();
             try {
                 //starting server
                 ServerSocket serverSocket = new ServerSocket(serverPort);

@@ -21,7 +21,7 @@ public class ServerStrategyGenerateMaze implements IServerStrategy {
             int[] clientArray = (int[]) fromClient.readObject();
 
             //generate a new maze
-            Maze clientMaze = new MyMazeGenerator().generate(clientArray[0], clientArray[1]); //TODO get generation algorithm from Configurations
+            Maze clientMaze = Configurations.getGenerator().generate(clientArray[0], clientArray[1]);
 
             //compress the maze
             ByteArrayOutputStream byteOs = new ByteArrayOutputStream();

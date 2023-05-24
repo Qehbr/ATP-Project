@@ -45,7 +45,7 @@ public class ServerStrategySolveSearchProblem implements IServerStrategy {
                 objectIs.close();
             } else {
                 //solve the maze
-                Solution clientMazeSolution = new BestFirstSearch().solve(new SearchableMaze(clientMaze)); //TODO get solving algorithm from Configurations
+                Solution clientMazeSolution = Configurations.getAlgorithm().solve(new SearchableMaze(clientMaze));
                 //save the solution in path
                 FileOutputStream fileOs = new FileOutputStream(tempDirectoryPath);
                 ObjectOutputStream objectOs = new ObjectOutputStream(fileOs);
