@@ -29,12 +29,10 @@ public class MyDecompressorInputStream extends InputStream {
      */
     @Override
     public int read(byte[] bytes) throws IOException {
-        int i=0;
+        //TODO: fix decompressor
+        int i;
         //initialize a byte array to receive and order the data
-        byte[] mazeBytes= new byte[bytes.length];
-        byte check;
-        while ((check = (byte)in.read())!=-1)
-            mazeBytes[i] = check;
+        byte[] mazeBytes= in.readAllBytes();
         //start position, goal position, rows and cols
         for (i = 0; i < 24; i++)
             bytes[i] = mazeBytes[i];
@@ -48,7 +46,7 @@ public class MyDecompressorInputStream extends InputStream {
         StringBuilder uncompressedMaze = new StringBuilder();
         int prevCode =  mazeBytes[24];
         uncompressedMaze.append(dictionary.get(prevCode));
-        for (i=25;i<bytes.length;i++)
+        for (i=25;i<mazeBytes.length;i++)
         {
             //variable for the current byte of data and for the current "string" of symbols
             int currCode = mazeBytes[i];
@@ -70,8 +68,8 @@ public class MyDecompressorInputStream extends InputStream {
         }
 
         //parse to bytes the uncompressed maze string
-        for (i=24;i<bytes.length;i++)
-            bytes[i] = Byte.parseByte(uncompressedMaze.substring(i,i+1));
+        for (i=0;i<uncompressedMaze.length();i++)
+            bytes[i+24] = Byte.parseByte(uncompressedMaze.substring(i,i+1));
         return 0;
     }
 }

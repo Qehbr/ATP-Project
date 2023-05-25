@@ -9,8 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b599af37-5f8c-434f-b529-9d743bcafaab" name="Changes" comment="Added configurations class, server now using configurations">
+    <list default="true" id="b599af37-5f8c-434f-b529-9d743bcafaab" name="Changes" comment="Added configurations class">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ATP-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ATP-Project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ATP-Project/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ATP-Project/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IO/MyDecompressorInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IO/MyDecompressorInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/RunCompressDecompressMaze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/RunCompressDecompressMaze.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +65,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
@@ -72,7 +77,7 @@
       <recent name="C:\Users\Yurko\IdeaProjects\ATP-Project\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Configurations">
+  <component name="RunManager" selected="Application.RunCompressDecompressMaze">
     <configuration name="Configurations" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.Configurations" />
       <module name="ATP-Project" />
@@ -147,9 +152,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RunCompressDecompressMaze" />
         <item itemvalue="Application.Configurations" />
         <item itemvalue="Application.RunCommunicateWithServers" />
-        <item itemvalue="Application.RunCompressDecompressMaze" />
         <item itemvalue="Application.RunMazeGenerator" />
         <item itemvalue="Application.RunMaze3DGenerator" />
       </list>
@@ -172,6 +177,7 @@
       <workItem from="1682061513006" duration="93000" />
       <workItem from="1682143451162" duration="19556000" />
       <workItem from="1682170721706" duration="30000" />
+      <workItem from="1685011243666" duration="2200000" />
     </task>
     <task id="LOCAL-00001" summary="Some classes have changed the names for testing purposes">
       <created>1681561874979</created>
@@ -215,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684963695813</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added configurations class">
+      <created>1685011296287</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685011296287</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +261,8 @@
     <MESSAGE value="Some classes have changed the names for testing purposes" />
     <MESSAGE value="Added new compressions" />
     <MESSAGE value="Added configurations class, server now using configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added configurations class, server now using configurations" />
+    <MESSAGE value="Added configurations class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added configurations class" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
