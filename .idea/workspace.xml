@@ -9,11 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b599af37-5f8c-434f-b529-9d743bcafaab" name="Changes" comment="Added new compressions">
-      <change beforePath="$PROJECT_DIR$/src/IO/SimpleDecompressorInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IO/SimpleDecompressorInputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerStrategyGenerateMaze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerStrategyGenerateMaze.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerStrategySolveSearchProblem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerStrategySolveSearchProblem.java" afterDir="false" />
+    <list default="true" id="b599af37-5f8c-434f-b529-9d743bcafaab" name="Changes" comment="Added configurations class, server now using configurations">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +201,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684963644212</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added configurations class, server now using configurations">
+      <created>1684963680916</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684963680916</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added configurations class, server now using configurations">
+      <created>1684963695813</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684963695813</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +247,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Some classes have changed the names for testing purposes" />
     <MESSAGE value="Added new compressions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new compressions" />
+    <MESSAGE value="Added configurations class, server now using configurations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added configurations class, server now using configurations" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
