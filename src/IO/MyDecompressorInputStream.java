@@ -29,7 +29,6 @@ public class MyDecompressorInputStream extends InputStream {
      */
     @Override
     public int read(byte[] bytes) throws IOException {
-        //TODO: fix decompressor
         int i;
         //initialize a byte array to receive and order the data
         byte[] mazeBytes= in.readAllBytes();
@@ -37,34 +36,37 @@ public class MyDecompressorInputStream extends InputStream {
         for (i = 0; i < 24; i++)
             bytes[i] = mazeBytes[i];
 
-        //initialize a dictionary with starter data
+        //initialize a dictionary with starter data of every single byte value
         Map<Integer, String> dictionary = new HashMap<>();
-        for (i = 0; i < 256; i++)
-            dictionary.put(i, Byte.toString((byte) i));
+        for (i = 0; i < 128; i++)
+            dictionary.put(i, String.format("%7s", Integer.toBinaryString((byte)i & 0xFF)).replace(' ', '0'));
 
-        //initialize a mutable string and add the first byte of data
+        //string to represent the uncompressed maze
         StringBuilder uncompressedMaze = new StringBuilder();
-        int prevCode =  mazeBytes[24];
-        uncompressedMaze.append(dictionary.get(prevCode));
-        for (i=25;i<mazeBytes.length;i++)
+
+        //check the dictionary for the right value, and add it to the string
+        //if we received "-1" it means it's the leftover data, add it one by one
+        for (i=24;i<mazeBytes.length;i++)
         {
-            //variable for the current byte of data and for the current "string" of symbols
-            int currCode = mazeBytes[i];
-            String currSymbol;
+            if ((int)mazeBytes[i] == -1)
+            {
+                StringBuilder currSymbol = new StringBuilder();
+                i++;
+                while (i<mazeBytes.length)
+                {
+                    currSymbol = new StringBuilder(currSymbol + Byte.toString(mazeBytes[i]));
+                    i++;
+                }
+                uncompressedMaze.append(currSymbol);
+                break;
+            }
 
-            //get the code for the current byte if it exists, if not, make a new one
-            if (dictionary.containsKey(currCode))
-                currSymbol = dictionary.get(currCode);
-            else
-                currSymbol = dictionary.get(prevCode)+dictionary.get(prevCode).charAt(0);
+            if(dictionary.containsKey((int)(mazeBytes[i])))
+            {
+                uncompressedMaze.append(dictionary.get((int)(mazeBytes[i])));
+            }
 
-            //add the new symbol to the string
-            uncompressedMaze.append(currSymbol);
 
-            //make a new dictionary value for a new symbol, and cycle back the prev and curr code
-            String prevSymbol = dictionary.get(prevCode);
-            dictionary.put(dictionary.size(),prevSymbol+currSymbol.charAt(0));
-            prevCode = currCode;
         }
 
         //parse to bytes the uncompressed maze string

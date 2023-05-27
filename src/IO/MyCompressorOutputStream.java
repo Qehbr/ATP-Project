@@ -30,31 +30,31 @@ public class MyCompressorOutputStream extends OutputStream {
             out.write(bytes[i]);
         }
 
-        //initialize a dictionary and fill it with starting data
+        //initialize a dictionary and fill it with starting data of every single byte value possible
         Map<String,Integer> dictionary = new HashMap<>();
-        for (i=0;i<256;i++)
-            dictionary.put(Byte.toString((byte)i),i);
-        //initialize a mutable string
-        StringBuilder currentSymbol = new StringBuilder();
+        for (i=0;i<128;i++)
+            dictionary.put(String.format("%7s", Integer.toBinaryString((byte)i & 0xFF)).replace(' ', '0'),i);
 
+        StringBuilder symbol = new StringBuilder();
+
+        //add the new byte to the string and check if it's in the dictionary, if yes, add the value and reset the string
+        //if not, add the new byte to the string and check again.
         for (i=24;i<bytes.length;i++)
         {
-            //check for the longest "string" of bytes in the dictionary.
-            //if something isn't in the dictionary, send the previous string, add the new one to the dictionary
-            //and start anew
-            String symbol = currentSymbol.toString() + Byte.toString(bytes[i]);
-            if (dictionary.containsKey(symbol))
-                currentSymbol = new StringBuilder(symbol);
-            else
-            {
-                out.write(dictionary.get(currentSymbol.toString()));
-                dictionary.put(symbol,dictionary.size());
-                currentSymbol = new StringBuilder(Byte.toString(bytes[i]));
+            symbol = new StringBuilder(symbol + Byte.toString(bytes[i]));
+            if(dictionary.containsKey(symbol.toString())) {
+                out.write(dictionary.get(symbol.toString()));
+                symbol = new StringBuilder();
             }
         }
-        //if there's a string that wasn't sent, send it
-        if(currentSymbol.length()>0)
-            out.write(dictionary.get(currentSymbol.toString()));
+        //if there was a string that wasn't sent (because the length doesn't divide in 7), mark its start, and send it
+        //one by one
+        if(symbol.length()>0)
+        {
+            out.write(-1);
+            for (i=0;i<symbol.length();i++)
+                out.write((byte)Character.getNumericValue(symbol.charAt(i)));
+        }
 
     }
 
