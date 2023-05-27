@@ -27,6 +27,7 @@ public class Server {
      * @param serverStrategy     Strategy used by server
      */
     public Server(int serverPort, int listeningIntervals, IServerStrategy serverStrategy) {
+        Configurations.init();
         this.serverPort = serverPort;
         this.listeningIntervals = listeningIntervals;
         this.serverStrategy = serverStrategy;
